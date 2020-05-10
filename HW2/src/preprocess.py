@@ -8,6 +8,8 @@ from sklearn.preprocessing import StandardScaler
 data = pd.read_excel(r'E:/School/2020 Spring/CS145/HW2/data/Customer_Churn.xlsx')
 print('Label encoding the string values in the data table...')
 '''
+LABEL ENCODINGS
+
 REPORTED_SATISFACTION
 very_unsat: 0
 unsat:      1

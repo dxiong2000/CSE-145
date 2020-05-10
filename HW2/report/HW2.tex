@@ -27,13 +27,16 @@
 \begin{document}
 \maketitle
 \section{Introduction}
-The goal of this project was to data mine the \texttt{Customer\_Churn.xlsx} dataset, which contains 20,000 entries with 12 variables describing features of customers of a mobile phone provider. We aimed to predict the variable \texttt{"LEAVE"}, which represented whether a given customer would stay or leave the company. To achieve this goal, we first create some visualizations to try and understand the data. We then used the $k$-means algorithm to cluster the data to further analyze the properties of the data. Finally, we chose predictive models to predict whether or not a customer would stay or leave the company.
+The goal of this project was to data mine the \texttt{Customer\_Churn.xlsx} dataset, which contains 20,000 entries with 12 variables describing features of customers of a mobile phone provider. We aimed to predict the variable \texttt{LEAVE}, which represented whether a given customer would stay or leave the company. To achieve this goal, we first create some visualizations to try and understand the data. We then used the $k$-means algorithm to cluster the data to further analyze the properties of the data. Finally, we chose predictive models to predict whether or not a customer would stay or leave the company.
 
 \section{Tools Used}
 This assignment was completed using Python 3.7 (\texttt{scikit-learn} $>=$ 0.22.1, \texttt{pandas}, \texttt{matplotlib}).
 
-\section{Data Understanding}
-One important metric is information gain, which is a measure of how much an attribute improves entropy over the whole segmentation it creates. In the context of supervised segmentation, information gain measures the knowledge gained by splitting the set on all values of a single attribute. \textbf{Figure 1} is a bar graph that ranks the information gain of all the attributes in decreasing order, with \texttt{"HOUSE"} \texttt{"INCOME"} being the attributes with the greatest information gain values. The other attributes had significantly lower information gain.\\\\
+\section{Data Pre-processing}
+The \texttt{Customer\_Churn.xlsx} spreadsheet had attribute values that were strings, such as "LEAVE" and "STAY" for the \texttt{LEAVE} attribute. To convert these into numerical values, I used label encoding. The specific encodings can be found in \texttt{../data/label\_encodings.txt}.
+
+\section{Data Visualization}
+One important metric is information gain, which is a measure of how much an attribute improves entropy over the whole segmentation it creates. In the context of supervised segmentation, information gain measures the knowledge gained by splitting the set on all values of a single attribute. \textbf{Figure 1} is a bar graph that ranks the information gain of all the attributes in decreasing order, with \texttt{HOUSE} and \texttt{INCOME} being the attributes with the greatest information gain values. The other attributes had significantly lower information gain.\\\\
 write about next visualization\\\\
 The code for these visualizations can be found in \texttt{visualizations.py}. 
 \begin{figure}[H]
@@ -46,7 +49,7 @@ The code for these visualizations can be found in \texttt{visualizations.py}.
 \end{figure}
 
 \section{Customer Segmentation with $k$-means}
-Before training a $k$-means model on the dataset, I first had to scale the data so that the magnitudes would not be so vastly different. To do this, I used the \texttt{StandardScaler} function from Python's \texttt{sklearn} module. I then used \texttt{sklearn}'s KMeans function for the $k$-means model along with the \texttt{k-means++} centroid initializer. \\\\
+Before training a $k$-means model on the dataset, I first had to scale the data so that the magnitudes would not be so vastly different. To do this, I used the \texttt{StandardScaler} function from Python's \texttt{sklearn} module. I then used \texttt{sklearn}'s \texttt{KMeans} function for the $k$-means model along with the \texttt{k-means++} centroid initializer. \\\\
 In order to determine the best value of $k$, I trained many different $k$-means models each with a different $k$ from $k=2 \rightarrow 25$. I then created two plots: a Sum Squared Error (SSE) plot and a Silhouette plot, \textbf{Figure 3} and \textbf{Figure 4}, respectively. I used the elbow method, along with the silhouette plot, to determine that a $k$-means model with $k=5$ would result in the optimal clustering.\\\\
 
 \begin{figure}[H]
@@ -56,4 +59,121 @@ In order to determine the best value of $k$, I trained many different $k$-means 
 	\includegraphics[scale=0.6]{kmeans_silhouette.png}
 	\caption{Silhouette plot}
 \end{figure}
+\subsection{Cluster Analysis ($k=5$)}
+The following tables contain the mean and standard deviation for each attribute and number of points in each of the 5 clusters. The raw data, which contains more information in the form of a five-number summary for each attribute (I did not include this due to space), can be found in \texttt{../data/cluster\_descriptions.txt}. One thing that I would like to note is that since many of the attributes were label encoded, the mean for such attributes would represent the average frequency of attribute values in the cluster. \\\\
+From the tables, we can see that the attributes \texttt{College}, \texttt{House}, \texttt{Reported Satisfaction}, \texttt{Reported Usage Level}, and \texttt{Considering Change of Plan} had very little variation among the average values between clusters. This might signify that these attributes did not have much affect on the clustering process. \\\\
+We can see that Cluster 1 had on average, higher \texttt{Income}, higher \texttt{Overage}, moderate \texttt{Leftover} minutes, higher \texttt{Handset Price}, higher number of \texttt{Over 15 Min Calls per Month}, and a higher number of "Leave" values for the \texttt{Leave} attribute. In contrast, Cluster 2 had on average, lower \texttt{Income}, lower \texttt{Overage}, lower \texttt{Leftover}, lower \texttt{Handset Price}, lower number of \texttt{Over 15 Min Calls per Month}, and a higher number of "Stay" values for the \texttt{Leave} attribute. Cluster 2 also has the most amount of points (6061 points), which shows that a large amount of the total points have lower than average values for their attributes.
+\begin{table}[H]
+	\centering
+	\caption{Cluster 1 (2212 points)}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\cline{1-8}
+		& College & Income & Overage & Leftover & House   & Handset Price & Over 15 Min Calls per Month \\
+		\cline{1-8}
+		Mean & 0.509 & 128118 &  193.77 & 24.25 &487948 &  641.66&  18.86\\
+		\cline{1-8}
+		Std  & 0.500&  22094 &   42.80  & 26.79 & 250777  & 159.40  &   6.85 \\
+		\cline{1-8}
+		\end{tabular}\\
+		\begin{tabular}{|l|l|l|l|l|l|}
+		\cline{1-6}
+		& Avg Call Duration & Reported Satis. & Reported Usage Lvl. & Consid. Change Plan & Leave\\
+		\cline{1-6}
+		Mean & 6.014 & 1.540 & 1.784 & 2.506 & 0.823\\
+		\cline{1-6}
+		Std & 4.408 & 1.623 & 1.494 & 1.317 &  0.381\\
+		\cline{1-6}
+	\end{tabular}
+\end{table}
+\begin{table}[H]
+	\centering
+	\caption{Cluster 2 (6061 points)}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\cline{1-8}
+		& College & Income & Overage & Leftover & House   & Handset Price & Over 15 Min Calls per Month \\
+		\cline{1-8}
+		Mean & 0.509  & 56155   & 32.07 &    7.64 & 495074 &  263.20 &    2.60\\
+		\cline{1-8}
+		Std  & 0.499 &  25797  &  39.57  &   9.76  &251585   & 94.22  &   3.13 \\
+		\cline{1-8}
+	\end{tabular}\\
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\cline{1-6}
+		& Avg Call Duration & Reported Satis. & Reported Usage Lvl. & Consid. Change Plan & Leave\\
+		\cline{1-6}
+		Mean & 8.176  &   1.572  &   1.834    & 2.430   &  0.326\\
+		\cline{1-6}
+		Std & 3.947 & 1.625 &  1.517  &   1.338   &  0.468\\
+		\cline{1-6}
+	\end{tabular}
+\end{table}
+\begin{table}[H]
+	\centering
+	\caption{Cluster 3 (3716 points)}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\cline{1-8}
+		& College & Income & Overage & Leftover & House   & Handset Price & Over 15 Min Calls per Month \\
+		\cline{1-8}
+		Mean & 0.487 &  66323  &  45.67  &  60.66 &499972  & 305.00 &    3.52\\
+		\cline{1-8}
+		Std  &0.499  & 33610  &  56.78  &  18.82 & 254140 &  137.91  &   4.49 \\
+		\cline{1-8}
+	\end{tabular}\\
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\cline{1-6}
+		& Avg Call Duration & Reported Satis. & Reported Usage Lvl. & Consid. Change Plan & Leave\\
+		\cline{1-6}
+		Mean & 1.786  &   1.581  &   1.797   &  2.527   &  0.511\\
+		\cline{1-6}
+		Std & 1.424 & 1.625  &1.514 &  1.301 & 0.499\\
+		\cline{1-6}
+	\end{tabular}
+\end{table}
+\begin{table}[H]
+	\centering
+	\caption{Cluster 4 (4106 points)}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\cline{1-8}
+		& College & Income & Overage & Leftover & House   & Handset Price & Over 15 Min Calls per Month \\
+		\cline{1-8}
+		Mean & 0.491 &  56220 &  195.48  &  19.85&  489171  & 263.13  &  19.29\\
+		\cline{1-8}
+		Std  & 0.499 &  25241  &  40.70   & 23.47 & 252382  &  93.23 &    6.48 \\
+		\cline{1-8}
+	\end{tabular}\\
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\cline{1-6}
+		& Avg Call Duration & Reported Satis. & Reported Usage Lvl. & Consid. Change Plan & Leave\\
+		\cline{1-6}
+		Mean &6.268 &  1.519 &   1.811 &  2.552 &   0.597\\
+		\cline{1-6}
+		Std & 4.321 &   1.627 &   1.513 &    1.314  &   0.490\\
+		\cline{1-6}
+	\end{tabular}
+\end{table}
+\begin{table}[H]
+	\centering
+	\caption{Cluster 5 (3905 points)}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|}
+		\cline{1-8}
+		& College & Income & Overage & Leftover & House   & Handset Price & Over 15 Min Calls per Month \\
+		\cline{1-8}
+		Mean & 0.513 & 129211  &  31.79  &  18.18 & 490828 &  656.55  &   2.59\\
+		\cline{1-8}
+		Std  & 0.499  & 21348 &   37.56 &   21.58 & 252931   &151.90   &  2.88 \\
+		\cline{1-8}
+	\end{tabular}\\
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\cline{1-6}
+		& Avg Call Duration & Reported Satis. & Reported Usage Lvl. & Consid. Change Plan & Leave\\
+		\cline{1-6}
+		Mean & 6.352  &   1.604  &   1.824   &  2.492  &   0.434\\
+		\cline{1-6}
+		Std & 4.251  &   1.643   &  1.509  &   1.329  &  0.495\\
+		\cline{1-6}
+	\end{tabular}
+\end{table}
+
+\section{Predictive Models}
+
 \end{document}
