@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.14)  10 MAY 2020 16:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.14)  10 MAY 2020 23:15
 entering extended mode
 **./HW2.tex
 (HW2.tex
@@ -828,33 +828,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--49
 [1
 
 {C:/Users/dxion/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
-
- []
-
-[2 <./images/InformationGain.png> <./images/IncomeVsChurn.png>]
-<./images/kmeans_SSE.png, id=20, 867.24pt x 433.62pt>
+<./images/kmeans_SSE.png, id=16, 867.24pt x 433.62pt>
 File: ./images/kmeans_SSE.png Graphic file (type png)
 <use ./images/kmeans_SSE.png>
 Package pdftex.def Info: ./images/kmeans_SSE.png  used on input line 57.
 (pdftex.def)             Requested size: 520.34802pt x 260.17401pt.
-<./images/kmeans_silhouette.png, id=21, 867.24pt x 433.62pt>
+<./images/kmeans_silhouette.png, id=17, 867.24pt x 433.62pt>
 File: ./images/kmeans_silhouette.png Graphic file (type png)
 <use ./images/kmeans_silhouette.png>
 Package pdftex.def Info: ./images/kmeans_silhouette.png  used on input line 59.
 
 (pdftex.def)             Requested size: 520.34802pt x 260.17401pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 52--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--61
+
+ []
+
+[2 <./images/InformationGain.png> <./images/IncomeVsChurn.png>]
 Overfull \hbox (0.57605pt too wide) in paragraph at lines 69--77
  [][] 
  []
@@ -896,7 +891,17 @@ Overfull \hbox (0.57605pt too wide) in paragraph at lines 157--165
  [][] 
  []
 
-[4] [5] (HW2.aux) ) 
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 179--182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--182
+
+ []
+
+[5] (HW2.aux) ) 
 Here is how much of TeX's memory you used:
  26395 strings out of 492483
  658349 string characters out of 3130503
@@ -905,13 +910,13 @@ Here is how much of TeX's memory you used:
  11254 words of font info for 41 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,9n,98p,743b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on HW2.pdf (5 pages, 177192 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on HW2.pdf (5 pages, 179773 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

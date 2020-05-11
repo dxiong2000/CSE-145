@@ -27,17 +27,17 @@
 \begin{document}
 \maketitle
 \section{Introduction}
-The goal of this project was to data mine the \texttt{Customer\_Churn.xlsx} dataset, which contains 20,000 entries with 12 variables describing features of customers of a mobile phone provider. We aimed to predict the variable \texttt{LEAVE}, which represented whether a given customer would stay or leave the company. To achieve this goal, we first create some visualizations to try and understand the data. We then used the $k$-means algorithm to cluster the data to further analyze the properties of the data. Finally, we chose predictive models to predict whether or not a customer would stay or leave the company.
+The goal of this project was to data mine the \texttt{Customer\_Churn.xlsx} dataset, which contains 20,000 entries with 12 variables describing features of customers of a mobile phone provider. We aimed to predict the variable \texttt{Leave}, which represented whether a given customer would stay or leave the company. To achieve this goal, we first create some visualizations to try and understand the data. We then used the $k$-means algorithm to cluster the data to further analyze the properties of the data. Finally, we chose predictive models to predict whether or not a customer would stay or leave the company.
 
 \section{Tools Used}
 This assignment was completed using Python 3.7 (\texttt{scikit-learn} $>=$ 0.22.1, \texttt{pandas}, \texttt{matplotlib}).
 
 \section{Data Pre-processing}
-The \texttt{Customer\_Churn.xlsx} spreadsheet had attribute values that were strings, such as "LEAVE" and "STAY" for the \texttt{LEAVE} attribute. To convert these into numerical values, I used label encoding. The specific encodings can be found in \texttt{../data/label\_encodings.txt}.
+The \texttt{Customer\_Churn.xlsx} spreadsheet had attribute values that were strings, such as "LEAVE" and "STAY" for the \texttt{Leave} attribute. To convert these into numerical values, I used label encoding. The specific encodings can be found in \texttt{../data/label\_encodings.txt}.
 
 \section{Data Visualization}
-One important metric is information gain, which is a measure of how much an attribute improves entropy over the whole segmentation it creates. In the context of supervised segmentation, information gain measures the knowledge gained by splitting the set on all values of a single attribute. \textbf{Figure 1} is a bar graph that ranks the information gain of all the attributes in decreasing order, with \texttt{HOUSE} and \texttt{INCOME} being the attributes with the greatest information gain values. The other attributes had significantly lower information gain.\\\\
-write about next visualization\\\\
+I decided to visualize information gain, which is a measure of how much an attribute improves entropy over the whole segmentation it creates. In the context of supervised segmentation, information gain measures the knowledge gained by splitting the set on all values of a single attribute. \textbf{Figure 1} is a bar graph that ranks the information gain of all the attributes in decreasing order, with \texttt{House} and \texttt{Income} being the attributes with the greatest information gain values. The other attributes had significantly lower information gain.\\\\
+The next visualization I decided to create is a bar graph that shows any relation between the \texttt{Income} attribute and customer churn. I broke up the income range into quarters, such that each class value "STAY" or "LEAVE" would have 4 bars. \textbf{Figure 2} shows that the income distribution for customers is relatively similar, with the "STAY" category having more people in the "lower" income ranges. \\\\
 The code for these visualizations can be found in \texttt{visualizations.py}. 
 \begin{figure}[H]
 	\centering
@@ -51,7 +51,7 @@ The code for these visualizations can be found in \texttt{visualizations.py}.
 \section{Customer Segmentation with $k$-means}
 Before training a $k$-means model on the dataset, I first had to scale the data so that the magnitudes would not be so vastly different. To do this, I used the \texttt{StandardScaler} function from Python's \texttt{sklearn} module. I then used \texttt{sklearn}'s \texttt{KMeans} function for the $k$-means model along with the \texttt{k-means++} centroid initializer. \\\\
 In order to determine the best value of $k$, I trained many different $k$-means models each with a different $k$ from $k=2 \rightarrow 25$. I then created two plots: a Sum Squared Error (SSE) plot and a Silhouette plot, \textbf{Figure 3} and \textbf{Figure 4}, respectively. I used the elbow method, along with the silhouette plot, to determine that a $k$-means model with $k=5$ would result in the optimal clustering.\\\\
-
+The code for the $k$-means model and its analysis can be found in \texttt{../src/kmeans.py}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{kmeans_SSE.png}
@@ -175,5 +175,12 @@ We can see that Cluster 1 had on average, higher \texttt{Income}, higher \texttt
 \end{table}
 
 \section{Predictive Models}
+\subsection{Decision Trees}
+The first type of predictive model I chose was the decision tree classifier. The decision tree model I used was \texttt{sklearn}'s \texttt{DecisionTreeClassifier} function. The hyper-parameters I tuned were: Gini impurity to measure the quality of a split and a max tree depth of 10. This model was trained and tested with a 75/25 split on the dataset, with 75\% of the dataset used for the training data. The decision tree classifier had on average 68\% accuracy on the test data.\\\\
+In an attempt to improve my testing accuracy, I decided to implement the random forest model, which is an ensemble learning method that improves upon the decision tree method by correcting their habit of over-fitting. Random forests do this by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes. The random forest model I used was \texttt{sklearn}'s \texttt{RandomForestClassifier} function. Using the same data split as the decision tree classifier, my random forest model saw little improvement; the model had on average an accuracy of 70\%. \\\\
+The code for these models can be found in \texttt{../src/decisiontree.py}.
+\subsection{Linear Regression}
 
+
+\section{Analysis}
 \end{document}

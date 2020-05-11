@@ -1,0 +1,28 @@
+REPORTED_SATISFACTION
+very_unsat: 0
+unsat:      1
+avg:        2
+sat:        3
+very_sat:   4
+
+REPORTED_USAGE_LEVEL
+very_little:0
+little:     1
+avg:        2
+high:       3
+very_high:  4
+
+CONSIDERING_CHANGE_OF_PLAN
+never_thought:              0
+no:                         1
+perhaps:                    2
+considering:                3
+actively_looking_into_it:   4
+
+LEAVE
+STAY:  0
+LEAVE: 1
+
+COLLEGE
+zero: 0
+one:  1
