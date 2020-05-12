@@ -30,7 +30,7 @@
 The goal of this project was to data mine the \texttt{Customer\_Churn.xlsx} dataset, which contains 20,000 entries with 12 variables describing features of customers of a mobile phone provider. We aimed to predict the variable \texttt{Leave}, which represented whether a given customer would stay or leave the company. To achieve this goal, we first create some visualizations to try and understand the data. We then used the $k$-means algorithm to cluster the data to further analyze the properties of the data. Finally, we chose predictive models to predict whether or not a customer would stay or leave the company.
 
 \section{Tools Used}
-This assignment was completed using Python 3.7 (\texttt{scikit-learn} $>=$ 0.22.1, \texttt{pandas}, \texttt{matplotlib}).
+This assignment was completed using Python 3.7 (\texttt{sklearn}, \texttt{keras}, \texttt{pandas}, \texttt{matplotlib}).
 
 \section{Data Pre-processing}
 The \texttt{Customer\_Churn.xlsx} spreadsheet had attribute values that were strings, such as "LEAVE" and "STAY" for the \texttt{Leave} attribute. To convert these into numerical values, I used label encoding. The specific encodings can be found in \texttt{../data/label\_encodings.txt}.
@@ -179,8 +179,30 @@ We can see that Cluster 1 had on average, higher \texttt{Income}, higher \texttt
 The first type of predictive model I chose was the decision tree classifier. The decision tree model I used was \texttt{sklearn}'s \texttt{DecisionTreeClassifier} function. The hyper-parameters I tuned were: Gini impurity to measure the quality of a split and a max tree depth of 10. This model was trained and tested with a 75/25 split on the dataset, with 75\% of the dataset used for the training data. The decision tree classifier had on average 68\% accuracy on the test data.\\\\
 In an attempt to improve my testing accuracy, I decided to implement the random forest model, which is an ensemble learning method that improves upon the decision tree method by correcting their habit of over-fitting. Random forests do this by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes. The random forest model I used was \texttt{sklearn}'s \texttt{RandomForestClassifier} function. Using the same data split as the decision tree classifier, my random forest model saw little improvement; the model had on average an accuracy of 70\%. \\\\
 The code for these models can be found in \texttt{../src/decisiontree.py}.
-\subsection{Linear Regression}
+\subsection{Neural Network}
+The next type of predictive model I chose was a simple feed-forward neural network. The model I used was a \texttt{keras} \texttt{Sequential} model. Like the decision tree model, I trained and validated the neural network using a 75/25 training and test split of the dataset. I created three different models, each with different hidden layer dimensions: \textbf{Figure 5:} 11x32x16x4x1, \textbf{Figure 6:} 11x64x32x16x4x1, and \textbf{Figure 7:} 11x128x64x32x16x8x4x1. The first layer in each model is 11 nodes for the 11 attributes, and the output layer is 1 node for the \texttt{Leave} attribute. All of my models trained on 20 epochs, used the binary cross-entropy loss function, and used the ReLU activation function on all layers except for the output layer, which used the sigmoid function.  \\\\
+The models had testing accuracies of 68.15\%, 68.18\%, and 67.78\% for figures 5, 6, and 7, respectively. The difference in accuracies is basically negligible, so we can see that the change in model dimensions doesn't affect the performance for this specific dataset. These also may not be the best hyper-parameters, so the model performance could be better. \\\\
+The code for the neural network model can be found in \texttt{../src/neuralnet.py}.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{neuralnet1.png}
+	\caption{Dimensions: 11x32x16x4x1, Test Accuracy: 68.15\%}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{neuralnet2.png}
+	\caption{Dimensions: 11x64x32x16x4x1, Test Accuracy: 68.18\%}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{neuralnet3.png}
+	\caption{Dimensions: 11x128x64x32x16x8x4x1, Test Accuracy: 67.78\%}
+\end{figure}
 
 \section{Analysis}
+Both the decision tree model and the neural network model achieved testing accuracies of about 68\%. The random forest model, which was done to try and improve upon the decision tree model, achieved slightly better results, with a testing accuracy of 70\$. All of these models were trained using 75\% of the dataset, and tested on the remaining 25\%. The data was shuffled before being split to try and mitigate any hidden patterns in the data ordering. \\\\
+In general, the data was balanced; upon analysis of the values under the \texttt{Leave} attribute, there were 10,148 entries under the "STAY" class, and 9,853 entries under the "LEAVE" class. Since the data seems balanced, I don't have to worry about the impacts of un-balanced data on my model performance.\\\\
+
+
 \end{document}
