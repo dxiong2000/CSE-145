@@ -30,7 +30,7 @@
 The goal of this project was to data mine the \texttt{Customer\_Churn.xlsx} dataset, which contains 20,000 entries with 12 variables describing features of customers of a mobile phone provider. We aimed to predict the variable \texttt{Leave}, which represented whether a given customer would stay or leave the company. To achieve this goal, we first create some visualizations to try and understand the data. We then used the $k$-means algorithm to cluster the data to further analyze the properties of the data. Finally, we chose predictive models to predict whether or not a customer would stay or leave the company.
 
 \section{Tools Used}
-This assignment was completed using Python 3.7 (\texttt{sklearn}, \texttt{keras}, \texttt{pandas}, \texttt{matplotlib}).
+This assignment was completed using Python 3.7 (\texttt{sklearn}, \texttt{keras}, \texttt{pandas}, \texttt{matplotlib}). Refer to the \texttt{README} to find instructions on how to run the code.
 
 \section{Data Pre-processing}
 The \texttt{Customer\_Churn.xlsx} spreadsheet had attribute values that were strings, such as "LEAVE" and "STAY" for the \texttt{Leave} attribute. To convert these into numerical values, I used label encoding. The specific encodings can be found in \texttt{../data/label\_encodings.txt}.
@@ -203,6 +203,6 @@ The code for the neural network model can be found in \texttt{../src/neuralnet.p
 \section{Analysis}
 Both the decision tree model and the neural network model achieved testing accuracies of about 68\%. The random forest model, which was done to try and improve upon the decision tree model, achieved slightly better results, with a testing accuracy of 70\$. All of these models were trained using 75\% of the dataset, and tested on the remaining 25\%. The data was shuffled before being split to try and mitigate any hidden patterns in the data ordering. \\\\
 In general, the data was balanced; upon analysis of the values under the \texttt{Leave} attribute, there were 10,148 entries under the "STAY" class, and 9,853 entries under the "LEAVE" class. Since the data seems balanced, I don't have to worry about the impacts of un-balanced data on my model performance.\\\\
-Some correlations I found between the data and churn is that 
+Some correlations I found between the data and customer churn is that there is some slight positive correlation between \texttt{Overage} and churn, as well as \texttt{Over 15 Min Calls per Month} and churn. In addition, there is some negative correlation between \texttt{House} and churn. Therefore, in order to reduce churn, I recommend that the company target customers with higher than average income, as well as customers with lower overcharges per month and lower number of calls that last over 15 minutes per month.
 
 \end{document}
