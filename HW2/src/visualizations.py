@@ -1,11 +1,9 @@
 import pandas as pd
-import xlrd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.artist import Artist as ax
-from textwrap import wrap
 from sklearn.feature_selection import mutual_info_classif
-from sklearn.feature_extraction.text import CountVectorizer
+import seaborn as sns
+
 
 def income_vs_churn():
     data = pd.read_csv('../data/Customer_Churn_processed.csv')
@@ -70,6 +68,7 @@ def income_vs_churn():
     plt.legend()
     plt.show()
 
+
 def information_gain():
     data = pd.read_csv('../data/Customer_Churn_processed.csv')
     df_leave = data['LEAVE']
@@ -92,6 +91,16 @@ def information_gain():
     plt.title('Attributes ranked by Information Gain')
     plt.show()
 
-income_vs_churn()
+
+def correlation():
+    data = pd.read_csv('../data/Customer_Churn_processed.csv')
+    corr = data.corr()
+    sns.heatmap(corr, xticklabels=['College', 'Income', 'Overage', 'Leftover', 'House', 'Handset', 'Over15', 'AvgCallDur', 'RepSatis', 'RepUsage', 'ConsidChange', 'Leave'],
+                yticklabels=['College', 'Income', 'Overage', 'Leftover', 'House', 'Handset', 'Over15', 'AvgCallDur', 'RepSatis', 'RepUsage', 'ConsidChange', 'Leave'])
+    plt.show()
+
+
+#income_vs_churn()
 information_gain()
+correlation()
 

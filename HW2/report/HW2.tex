@@ -36,16 +36,16 @@ This assignment was completed using Python 3.7 (\texttt{sklearn}, \texttt{keras}
 The \texttt{Customer\_Churn.xlsx} spreadsheet had attribute values that were strings, such as "LEAVE" and "STAY" for the \texttt{Leave} attribute. To convert these into numerical values, I used label encoding. The specific encodings can be found in \texttt{../data/label\_encodings.txt}.
 
 \section{Data Visualization}
-I decided to visualize information gain, which is a measure of how much an attribute improves entropy over the whole segmentation it creates. In the context of supervised segmentation, information gain measures the knowledge gained by splitting the set on all values of a single attribute. \textbf{Figure 1} is a bar graph that ranks the information gain of all the attributes in decreasing order, with \texttt{House} and \texttt{Income} being the attributes with the greatest information gain values. The other attributes had significantly lower information gain.\\\\
-The next visualization I decided to create is a bar graph that shows any relation between the \texttt{Income} attribute and customer churn. I broke up the income range into quarters, such that each class value "STAY" or "LEAVE" would have 4 bars. \textbf{Figure 2} shows that the income distribution for customers is relatively similar, with the "STAY" category having more people in the "lower" income ranges. \\\\
+I decided to visualize information gain, which is a measure of how much an attribute improves entropy over the whole segmentation it creates. \textbf{Figure 1} is a bar graph that ranks the information gain of all the attributes in decreasing order, which would help us understand which attributes are the most important.\\\\
+The next visualization I decided to create is a heatmap that shows correlations between attributes. Shown in \textbf{Figure 2}, the heatmap is useful for understanding how certain attributes are related to each other, and can help understand how to increase customer churn.\\\\
 The code for these visualizations can be found in \texttt{visualizations.py}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{InformationGain.png}
 	\caption{Attributes ranked by their information gain}
 	\centering 
-	\includegraphics[scale=0.8]{IncomeVsChurn.png}
-	\caption{Income vs Churn}
+	\includegraphics[scale=0.8]{heatmap.png}
+	\caption{Correlation Heatmap}
 \end{figure}
 
 \section{Customer Segmentation with $k$-means}
@@ -203,6 +203,6 @@ The code for the neural network model can be found in \texttt{../src/neuralnet.p
 \section{Analysis}
 Both the decision tree model and the neural network model achieved testing accuracies of about 68\%. The random forest model, which was done to try and improve upon the decision tree model, achieved slightly better results, with a testing accuracy of 70\$. All of these models were trained using 75\% of the dataset, and tested on the remaining 25\%. The data was shuffled before being split to try and mitigate any hidden patterns in the data ordering. \\\\
 In general, the data was balanced; upon analysis of the values under the \texttt{Leave} attribute, there were 10,148 entries under the "STAY" class, and 9,853 entries under the "LEAVE" class. Since the data seems balanced, I don't have to worry about the impacts of un-balanced data on my model performance.\\\\
-
+Some correlations I found between the data and churn is that 
 
 \end{document}

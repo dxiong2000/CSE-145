@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.14)  11 MAY 2020 23:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.14)  12 MAY 2020 00:04
 entering extended mode
 **./HW2.tex
 (HW2.tex
@@ -810,11 +810,11 @@ File: ./images/InformationGain.png Graphic file (type png)
 <use ./images/InformationGain.png>
 Package pdftex.def Info: ./images/InformationGain.png  used on input line 44.
 (pdftex.def)             Requested size: 385.4405pt x 289.0804pt.
-<./images/IncomeVsChurn.png, id=5, 462.528pt x 346.896pt>
-File: ./images/IncomeVsChurn.png Graphic file (type png)
-<use ./images/IncomeVsChurn.png>
-Package pdftex.def Info: ./images/IncomeVsChurn.png  used on input line 47.
-(pdftex.def)             Requested size: 370.02289pt x 277.51717pt.
+<./images/heatmap.png, id=5, 473.3685pt x 378.6948pt>
+File: ./images/heatmap.png Graphic file (type png)
+<use ./images/heatmap.png>
+Package pdftex.def Info: ./images/heatmap.png  used on input line 47.
+(pdftex.def)             Requested size: 378.69531pt x 302.95624pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 39--49
 
@@ -849,7 +849,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--61
 
  []
 
-[2 <./images/InformationGain.png> <./images/IncomeVsChurn.png>]
+[2 <./images/InformationGain.png> <./images/heatmap.png>]
 Overfull \hbox (0.57605pt too wide) in paragraph at lines 69--77
  [][] 
  []
@@ -928,25 +928,20 @@ File: ./images/neuralnet3.png Graphic file (type png)
 Package pdftex.def Info: ./images/neuralnet3.png  used on input line 199.
 (pdftex.def)             Requested size: 277.51894pt x 208.13919pt.
  [6 <./images/neuralnet1.png> <./images/neuralnet2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+Underfull \hbox (badness 10000) in paragraph at lines 204--207
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+Underfull \hbox (badness 10000) in paragraph at lines 204--207
 
  []
 
 [7 <./images/neuralnet3.png>] (HW2.aux) ) 
 Here is how much of TeX's memory you used:
  26413 strings out of 492483
- 658766 string characters out of 3130503
- 863060 words of memory out of 3000000
+ 658730 string characters out of 3130503
+ 863057 words of memory out of 3000000
  30352 multiletter control sequences out of 15000+200000
  11254 words of font info for 41 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -957,7 +952,7 @@ c/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
 17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on HW2.pdf (7 pages, 237801 bytes).
+Output written on HW2.pdf (7 pages, 245326 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
